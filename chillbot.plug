@@ -1,0 +1,11 @@
+[Core]
+module = chillbot
+name = chillbot
+
+[Documentation]
+description = Used to pick random movies to watch for Netflix and chill.
+
+[Python]
+version = 3
+
+[Errbot]
