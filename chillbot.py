@@ -7,11 +7,16 @@ movies = {"action": {"Spectre": ['punny', 'silly'], "Inception": ['thought-provo
                        "Donnie Darko": ['creepy', 'thought-provoking', 'sad'],
                        "Seven": ['thought-provoking', 'sad', 'creepy']},
           "comedy": {"Deadpool": ['silly', 'punny'], "Ferris Bueller's Day Off": ['silly', 'romantic', 'uplifting'],
-                     "The Breakfast Club": ['silly', 'romantic', 'thought-provoking', 'uplifting']} }
+                     "The Breakfast Club": ['silly', 'romantic', 'thought-provoking', 'uplifting'],
+                     "Shirely Valentine": ['life affirming', 'need a good cry and laugh']},
+          "drama": {"The Cook, The Thief, His Wife & Her Lover": ['crying', 'emotionally drained', 'enraged', 'awe'],
+                    "Shirely Valentine": ['life affirming', 'need a good cry and laugh']}}
 
-genres = ['action', 'comedy', 'thriller']
+genres = ['action', 'comedy', 'thriller', 'drama']
 
-moods = ['creepy', 'thought-provoking', 'uplifting', 'silly', 'romantic']
+moods = ['creepy', 'thought-provoking', 'uplifting', 'silly', 'romantic', 'crying', 'emotionally drained', 'enraged',
+         'awe', 'life affirming', 'need a good cry and laugh']
+
 
 class Chillbot(BotPlugin):
     """
@@ -20,11 +25,11 @@ class Chillbot(BotPlugin):
 
     @botcmd
     def moods(self, message, args):
-        return 'Creepy, Thought-provoking, Uplifting, Silly, Romantic'
+        return ', '.join(moods).title()
 
     @botcmd
     def genres(self, message, args):
-        return 'Action, Comedy, Thriller'
+        return ', '.join(genres).title()
 
     @arg_botcmd('genre', type=str)
     @arg_botcmd('--mood', dest='mood', type=str)
