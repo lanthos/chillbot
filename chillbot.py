@@ -15,7 +15,7 @@ movies = {"action": {"Spectre": ['punny', 'silly'], "Inception": ['thought-provo
 genres = ['action', 'comedy', 'thriller', 'drama']
 
 moods = ['creepy', 'thought-provoking', 'uplifting', 'silly', 'romantic', 'crying', 'emotionally drained', 'enraged',
-         'awe', 'life affirming', 'need a good cry and laugh']
+         'awe', 'life affirming', 'need a good cry and laugh', 'sad']
 
 
 class Chillbot(BotPlugin):
