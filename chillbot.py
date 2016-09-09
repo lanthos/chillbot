@@ -38,7 +38,10 @@ class Chillbot(BotPlugin):
         """
         movie_list = []
         genre = args[0].lower()
-        mood = args[1].lower()
+        try:
+            mood = args[1].lower()
+        except:
+            mood = None
         if not mood:
             mood = random.choice(moods)
         elif mood not in moods:
