@@ -1,4 +1,4 @@
-from errbot import BotPlugin, botcmd, arg_botcmd
+from errbot import BotPlugin, botcmd
 import random
 
 movies = {"action": {"Spectre": ['punny', 'silly'], "Inception": ['thought-provoking', 'sad', 'creepy'],
@@ -31,17 +31,21 @@ class Chillbot(BotPlugin):
     def genres(self, message, args):
         return ', '.join(genres).title()
 
-    @arg_botcmd('genre', type=str)
-    @arg_botcmd('--mood', dest='mood', type=str)
-    def letschill(self, genre=None, mood=None):
+    @botcmd(split_args_with=None)
+    def letschill(self, message, args):
+        """
+        Send genre then mood.  e.g. !letschill action silly
+        """
         movie_list = []
+        genre = args[0].lower()
+        mood = args[1].lower()
         if not mood:
             mood = random.choice(moods)
-        elif mood.lower() not in moods:
+        elif mood not in moods:
             return "Please use the moods command to get list of available moods."
-        if genre.lower() not in genres:
+        if genre not in genres:
             return "Please use the genres command to get list of available genres."
-        for k,v in movies[genre.lower()].items():
-            if mood.lower() in v:
+        for k, v in movies[genre].items():
+            if mood in v:
                 movie_list.append(k)
-        return "You should watch {}".format(random.choice(movie_list))
+        return "You should watch {}!".format(random.choice(movie_list))
