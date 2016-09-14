@@ -49,7 +49,12 @@ class Chillbot(BotPlugin):
         if genre not in genres:
             if genre in moods:
                 mood = genre
-                genre = random.choice(genres)
+                valid = None
+                while not valid:
+                    genre = random.choice(genres)
+                    for v in movies[genre].values():
+                        if mood in v:
+                            valid = True
             else:
                 return "Please use the genres command to get list of available genres."
         for k, v in movies[genre].items():
