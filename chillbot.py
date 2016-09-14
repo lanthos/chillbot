@@ -47,15 +47,15 @@ class Chillbot(BotPlugin):
         elif mood not in moods:
             return "Please use the moods command to get list of available moods."
         if genre not in genres:
-          if genre in moods:
-            mood = genre
-            genre = random.choice(genres)
-          else:
-            return "Please use the genres command to get list of available genres."
+            if genre in moods:
+                mood = genre
+                genre = random.choice(genres)
+            else:
+                return "Please use the genres command to get list of available genres."
         for k, v in movies[genre].items():
             if mood in v:
                 movie_list.append(k)
-        if len(move_list) == 0:
-          return "Nothing matched your searches of {}/{}".format(genre, mood)
+        if len(movie_list) == 0:
+            return "Nothing matched your searches of {}/{}".format(genre, mood)
         else:
-          return "You should watch {}!".format(random.choice(movie_list))
+            return "You should watch {}!".format(random.choice(movie_list))
